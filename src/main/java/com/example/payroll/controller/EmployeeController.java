@@ -1,14 +1,18 @@
-package com.example.payroll;
+package com.example.payroll.controller;
 
 // import org.springframework.hateoas.EntityModel;
 // import org.springframework.web.bind.annotation.*;
 
+import com.example.payroll.exception.EmployeeNotFoundException;
+import com.example.payroll.repository.EmployeeRepository;
+import com.example.payroll.model.Employee;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.List;
 import javax.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,18 +23,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-// import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-// import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @Tag(name = "Employees", description = "Employee 컨트롤러")
 @RestController
+@RequiredArgsConstructor
 public class EmployeeController {
 
   private final EmployeeRepository repository;
 
-  public EmployeeController(EmployeeRepository repository) {
+  /*public EmployeeController(EmployeeRepository repository) {
     this.repository = repository;
-  }
+  }*/
 
   @Operation(summary = "get employees", description = "모든 employees 조회 샘플", tags = "Employees", responses = {
       @ApiResponse(responseCode = "200", description = "**오류 발생시 Status Code**<br /><br />" +
@@ -89,7 +92,8 @@ public class EmployeeController {
   @Operation(summary = "delete a employee", description = "id 를 이용하여 기존 employee를 삭제 한다", tags = "Employees",
       responses = {@ApiResponse(responseCode = "200", description = "employee terminate 성공")})
   @DeleteMapping("/employees/{id}")
-  public void deleteEmployee(@Parameter(name="id", description = "employee's id", example = "2") @PathVariable Long id) {
+  public void deleteEmployee(
+      @Parameter(name = "id", description = "employee's id", example = "2") @PathVariable Long id) {
     repository.deleteById(id);
   }
 }
