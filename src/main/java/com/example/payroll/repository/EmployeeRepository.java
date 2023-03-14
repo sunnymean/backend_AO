@@ -1,8 +1,32 @@
 package com.example.payroll.repository;
 
 import com.example.payroll.model.Employee;
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Component;
 
-public interface EmployeeRepository extends JpaRepository<Employee, Long> {
+@Component
+public class EmployeeRepository {
+
+	private final SqlSession sqlSession;
+
+	public EmployeeRepository(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+
+	public Employee selectEmployeeById(long id) {
+		return this.sqlSession.selectOne("selectEmployeeById", id);
+	}
+
+	public List<Employee> findAll() {
+		return this.sqlSession.selectList("findAll");
+	}
+
+	public Employee save(Employee employee){
+//		return this.sqlSession.insert("save", employee);
+		this.sqlSession.insert("save", employee);
+		return employee;
+	}
+
 
 }

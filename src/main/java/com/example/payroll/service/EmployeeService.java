@@ -12,7 +12,7 @@ public class EmployeeService {
 
   private final EmployeeRepository repository;
 
-  @Transactional(readOnly = true)
+//  @Transactional(readOnly = true)
   public Employee getEmployeeById(Long id) {
 //    if (ObjectUtils.isEmpty(email)) {
 //      throw new CustomBusinessException(CommonMessageConstants.MSG_EMAIL_REQUIRED,
@@ -20,7 +20,7 @@ public class EmployeeService {
 //    }
 
 //    return memberRepository.selectMemberByEmailAddress(MemberDto.builder().email(email).build());
-    return repository.getById(id);
+    return repository.selectEmployeeById(id);
   }
 
 }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.payroll.mapper">
+  <select id="selectEmployeeById" resultType="com.example.payroll.model.Employee">
+    select id, name, role from Employee where id = #{id}
+  </select>
+
+  <select id="findAll" resultType="com.example.payroll.model.Employee">
+    select id, name, role from Employee
+  </select>
+
+  <insert id="save" parameterType="com.example.payroll.model.Employee" useGeneratedKeys="true" keyColumn="id" keyProperty="id" >
+    insert into Employee values (default, #{name}, #{role})
+  </insert>
+</mapper>

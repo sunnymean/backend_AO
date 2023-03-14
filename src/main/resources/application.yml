@@ -1,0 +1,20 @@
+
+spring:
+  # PostgreSQL DB ??
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: 1234
+
+# Mybatis ??
+mybatis:
+  # default Package location - resultType? Alias? ?????.
+  type-aliases-package: com.example.payroll.repository
+  # mapper location - ?? ? xml ??? ?????.
+  mapper-locations: classpath:mappers/*.xml
+  # column name to camel case - ?? ?? ???? CamelCase? ?? ??? ???.
+  configuration:
+    map-underscore-to-camel-case: true
+
+#mybatis.config-location=classpath:mybatis-config.xml
