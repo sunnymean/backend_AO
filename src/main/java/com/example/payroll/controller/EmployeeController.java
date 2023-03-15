@@ -87,19 +87,18 @@ public class EmployeeController {
 			return repository.save(newEmployee);
 		});*/
 		Employee employee = repository.selectEmployeeById(id);
-		if(employee.getId() == id){
-			newEmployee.setId(id);
-//			repository.update(newEmployee);
+		if(employee == null){
+			return repository.save(newEmployee);
 		} else {
-//			repository.save(emp
-		}return null;
+			return repository.update(employee);
+		}
 	}
 
-	/*@Operation(summary = "delete a employee", description = "id 를 이용하여 기존 employee를 삭제 한다", tags = "Employees",
+	@Operation(summary = "delete a employee", description = "id 를 이용하여 기존 employee를 삭제 한다", tags = "Employees",
 		responses = {@ApiResponse(responseCode = "200", description = "employee terminate 성공")})
 	@DeleteMapping("/employees/{id}")
 	public void deleteEmployee(
-		@Parameter(name = "id", description = "employee's id", example = "2") @PathVariable(name = "id") Long id) {
-		repository.deleteById(id);
-	}*/
+		@Parameter(name = "id", description = "employee's id", example = "2") @PathVariable(name = "id") int id) {
+		repository.delete(id);
+	}
 }

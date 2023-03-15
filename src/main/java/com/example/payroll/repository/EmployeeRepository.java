@@ -28,5 +28,13 @@ public class EmployeeRepository {
 		return employee;
 	}
 
+	public Employee update(Employee newEmployee){
+		this.sqlSession.update("update", newEmployee);
+		return newEmployee;
+	}
+
+	public int delete(int id) {
+		return this.sqlSession.delete("deleteById", id);
+	}
 
 }

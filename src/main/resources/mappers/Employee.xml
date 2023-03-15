@@ -14,4 +14,12 @@
   <insert id="save" parameterType="com.example.payroll.model.Employee" useGeneratedKeys="true" keyColumn="id" keyProperty="id" >
     insert into Employee values (default, #{name}, #{role})
   </insert>
+
+  <update id="update" parameterType="com.example.payroll.model.Employee">
+    update Employee set name = #{name}, role=#{role} where id = #{id}
+  </update>
+
+  <delete id="deleteById" parameterType="int">
+    delete from Employee where id = #{id}
+  </delete>
 </mapper>
