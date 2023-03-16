@@ -1,6 +1,6 @@
 package com.example.payroll
 
-import com.example.payroll.feign.client.StatusClient
+import com.example.payroll.feign.client.SimpleClient
 import com.example.payroll.model.Employee
 import com.example.payroll.repository.EmployeeRepository
 import groovy.util.logging.Slf4j
@@ -14,14 +14,14 @@ import spock.lang.Specification
 class FeignClientTest extends Specification {
 
     @Autowired
-    StatusClient client;
+    SimpleClient simpleClient;
 
     @Autowired
     EmployeeRepository repository;
 
     def "status check"(){
         expect:
-        client.status(201)
+        simpleClient.status(201)
 
         when:
         List<Employee> list = repository.findAll()
