@@ -2,12 +2,15 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '2.7.8'
 	id 'io.spring.dependency-management' version '1.1.0'
+	id 'groovy'
 }
 
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
+
+
 
 repositories {
 	mavenCentral()
@@ -29,7 +32,13 @@ dependencies {
 
 	//runtimeOnly 'com.h2database:h2'
 	runtimeOnly 'org.postgresql:postgresql'
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	testImplementation 'org.spockframework:spock-core:1.2-groovy-2.4'
+	testImplementation 'org.spockframework:spock-spring:1.2-groovy-2.4'
+	testRuntimeOnly('org.junit.vintage:junit-vintage-engine')
+
 }
 
 tasks.named('test') {

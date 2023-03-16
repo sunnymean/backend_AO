@@ -13,6 +13,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.List;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-
+@Slf4j
 @Tag(name = "Employees", description = "Employee 컨트롤러")
 @RestController
 //@RequiredArgsConstructor
@@ -43,6 +44,7 @@ public class EmployeeController {
 			"**FAIL** : fail<br />")})
 	@GetMapping(path = "/employees", produces = {MediaType.APPLICATION_JSON_VALUE})
 	List<Employee> all() {
+		log.info("request all employees");
 		return repository.findAll();
 	}
 
