@@ -8,7 +8,7 @@
   </select>
 
   <select id="findAll" resultType="com.example.payroll.model.Employee">
-    select id, name, role from Employee
+    select id, name, role from Employee order by id ASC
   </select>
 
   <insert id="save" parameterType="com.example.payroll.model.Employee" useGeneratedKeys="true" keyColumn="id" keyProperty="id" >

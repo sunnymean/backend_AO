@@ -7,6 +7,9 @@ spring:
     username: postgres
     password: 1234
 
+#  main:
+#    allow-bean-definition-overriding: true
+
 # Mybatis ??
 mybatis:
   # default Package location - resultType? Alias? ?????.
@@ -17,4 +20,8 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
 
+#target api for feign client test
+external-api:
+  http-bin: https://httpbin.org
 #mybatis.config-location=classpath:mybatis-config.xml
+

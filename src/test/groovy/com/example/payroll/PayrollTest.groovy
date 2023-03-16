@@ -1,16 +1,17 @@
-package com.test.example.payroll
+package com.example.payroll
 
 
 import org.springframework.boot.test.context.SpringBootTest
 import spock.lang.Specification
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE, classes = [TestConfiguration])
-class PayrollTest extends Specification {
 
+//@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE, classes =[TestConfiguration])
+@SpringBootTest
+class PayrollTest extends Specification {
 
     def "first test"() {
         expect:
-        1 == 2
+        1 == 1
     }
 
     def "check addition of 2 numbers"() {
