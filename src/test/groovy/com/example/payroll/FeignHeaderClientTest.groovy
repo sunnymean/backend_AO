@@ -22,6 +22,11 @@ class FeignHeaderClientTest extends Specification {
 
     def "status3"() {
         expect:
-        headerClient.status3("value3", 200)
+        headerClient.status3("wyees barsoom", 200)
+    }
+
+    def "echo header"() {
+        expect:
+        headerClient.echoHeader("wyees barsoom");
     }
 }

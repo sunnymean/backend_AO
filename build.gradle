@@ -12,6 +12,7 @@ sourceCompatibility = '11'
 
 ext {
 	springCloudVersion = '2021.0.3'
+	commonsLangVersion = '3.11'
 }
 
 repositories {
@@ -50,6 +51,9 @@ dependencies {
 	testImplementation 'org.spockframework:spock-core:1.2-groovy-2.4'
 	testImplementation 'org.spockframework:spock-spring:1.2-groovy-2.4'
 	testRuntimeOnly('org.junit.vintage:junit-vintage-engine')
+
+	// for `StringUtils`
+	implementation "org.apache.commons:commons-lang3:${commonsLangVersion}"
 
 	/*testImplementation 'org.spockframework.spock:spock-core:spock-2.4-M1'
 	testImplementation 'org.spockframework.spock:spock-spring:spock-2.4-M1'*/

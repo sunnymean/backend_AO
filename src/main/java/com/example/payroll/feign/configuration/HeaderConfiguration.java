@@ -7,6 +7,6 @@ public class HeaderConfiguration {
 
 	@Bean
 	public RequestInterceptor requestInterceptor() {
-		return requestTemplate -> requestTemplate.header("header", "header1", "header2");
+		return requestTemplate -> requestTemplate.header("header", "och ohem", "och tay");
 	}
 }

@@ -20,18 +20,21 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
 
-#target api for feign client test
-external-api:
-  http-bin: https://httpbin.org
 #mybatis.config-location=classpath:mybatis-config.xml
 
 feign:
   client:
     config:
-      default: # @FeignClient 에서 name 값, 전역으로 설정하려면 default
-        connectTimeout: 5000
-        readTimeout: 2000
+      default:
+        connectTimeout: 1000
+        readTimeout: 5000
+        loggerLevel: NONE
+      simple-client:
+        connectTimeout: 1000
+        readTimeout: 4000
         loggerLevel: FULL
+  demo:
+    http-bin: https://httpbin.org
 
 logging:
   level:
