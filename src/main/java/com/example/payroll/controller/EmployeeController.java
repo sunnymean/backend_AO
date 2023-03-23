@@ -12,7 +12,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.List;
 import javax.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -66,7 +65,11 @@ public class EmployeeController {
 	public @ResponseBody Employee one(
 		@Parameter(name = "id", description = "employee's id", example = "") @PathVariable(name = "id") final Long id) {
 		//    EntityModel<Employee> one(@PathVariable Long id) {
-		return repository.selectEmployeeById(id);
+		Employee employee = repository.selectEmployeeById(id);
+		if(employee == null ){
+			throw new EmployeeNotFoundException(id);
+		}
+		return employee;
     /* Employee employee = repository.findById(id)
             .orElseThrow(() -> new EmployeeNotFoundException(id));*/
    /* return EntityModel.of(employee, //
