@@ -2,6 +2,8 @@ package com.example.payroll.feign.client;
 
 import com.example.payroll.feign.configuration.FeignConfiguration;
 import com.example.payroll.feign.model.HttpbinRequestInfo;
+import com.example.payroll.feign.model.HttpbinResponse;
+import com.example.payroll.feign.model.HttpbinResponseInfo;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +26,12 @@ public interface SimpleClient {
 
 	@PostMapping(value = "/delay/{second}", produces = MediaType.APPLICATION_JSON_VALUE,
 		consumes = MediaType.APPLICATION_JSON_VALUE)
-	void testErrorDecoderByDelayPost(@RequestBody HttpbinRequestInfo requestInfo,
+	HttpbinResponseInfo testErrorDecoderByDelayPost(@RequestBody HttpbinRequestInfo requestInfo,
 		@PathVariable(name = "second") int delaySecond);
 
+
+	@PostMapping(value = "/delay/{second}", produces = MediaType.APPLICATION_JSON_VALUE,
+		consumes = MediaType.APPLICATION_JSON_VALUE)
+	HttpbinResponse testResponseMapping(@RequestBody HttpbinRequestInfo requestInfo,
+		@PathVariable(name = "second") int delaySoconds);
 }

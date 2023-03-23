@@ -2,6 +2,7 @@ package com.example.payroll.feign.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,10 +13,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(Include.NON_NULL)
-public class BinBodyHeader {
+public class HttpbinBodyHeader {
 
-	private String Accept;
-	private String Content_Type;
-	private String User_Agent;
-	private String X_Amzn_Trace_Id;
+	@JsonProperty("Acctep")
+	private String accept;
+	@JsonProperty("Content-Type")
+	private String contentType;
+
+	@JsonProperty("User-Agent")
+	private String userAgnet;
+	@JsonProperty("X-Amzn-Trace-Id")
+	private String xAmznTraceId;
 }

@@ -23,7 +23,7 @@ public class FeignInterceptor implements RequestInterceptor {
 		}
 
 		String oldMessage = StringUtils.toEncodedString(template.body(), UTF_8);
-		log.info("[DemoFeignInterceptor] Old Message. {}", oldMessage);
+		log.info("[FeignInterceptor] Old Message. {}", oldMessage);
 
 		ObjectMapper objectMapper = new ObjectMapper();
 

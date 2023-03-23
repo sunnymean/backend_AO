@@ -13,7 +13,7 @@ public interface HeaderClient {
 	@GetMapping(value = "/status/{status}")
 	void status(@PathVariable("status") int status);
 
-	@GetMapping(value = "/status/{status}", headers = "my-test-header2=wyeems basum")
+	@GetMapping(value = "/status/{status}", headers = "my-test-header2=wyeems barsoom")
 	void status2(@PathVariable("status") int status);
 
 	@GetMapping(value = "/status/{status}")
